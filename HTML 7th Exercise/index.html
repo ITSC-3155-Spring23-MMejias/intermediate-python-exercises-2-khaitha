@@ -1,0 +1,29 @@
+<input type="text" id="txt-price" placeholder="Enter the price of the item"> <!-- This is a text box that allows user to input price of item -->
+<input type="text" id="txt-quantity" placeholder="Enter the quanity of the item"> <!-- THis is a text box that allows user to input amount of items -->
+<button id="btn-submit">Calculate</button> <!-- This is the calculate button  -->
+<div id="output"></div> <!-- This is probably the spae where the calcuation is displayed -->
+
+<script>
+    // var ... are the varible placeholder for all price,quanitity, submit, and output function that users are going to interact with
+  var priceInput = document.getElementById('txt-price');  
+  var quantityInput = document.getElementById('txt-quantity');
+  var submitBtn = document.getElementById('btn-submit');
+  var output = document.getElementById('output');
+  //Below is the the event that will take place oncethe button is clicked
+  submitBtn.addEventListener('click', function () {
+    //below are the numerical values that are gathered and calculated for the output
+    var price = priceInput.value;
+    var quanity = quantityInput.value;
+    price = +price;
+    quanity = +quanity;
+    //Making sure inputs are correct, like a try catch.
+    if (Number.isNaN(price) || Number.isNaN(quanity)) {
+      output.innerHTML = 'Invalid input';
+      return;
+    }
+    //total price display
+    var totalPrice = price * quanity;
+    totalPrice = Math.round(totalPrice * 100) / 100;
+    output.innerHTML = quanity + ' items at $' + price + ' each is $' + totalPrice; // Output that is displayed on the web
+  });
+</script>
